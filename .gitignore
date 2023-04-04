@@ -1,0 +1,4 @@
+.space
+/private/*
+/__pycache__/*
+*.pyc
