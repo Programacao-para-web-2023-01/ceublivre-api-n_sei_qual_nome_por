@@ -1,0 +1,7 @@
+{
+    "user": "1zxigynslxmhzon3zi6f",
+    "password": "pscale_pw_TxaEl9ZYwiigOKpSKNbzxUxy1rprLinhkWR5d7ar2yN",
+    "host": "aws.connect.psdb.cloud",
+    "port": 3306,
+    "db_name": "geren_pedidos"
+}
