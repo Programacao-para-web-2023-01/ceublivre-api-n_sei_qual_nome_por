@@ -47,6 +47,13 @@ def get_produtos(db: Session):
     return products
 
 
+def get_pedido(db: Session, pedido_id: int):
+    return (db
+            .query(models.Pedido)
+            .filter(models.Pedido.id == pedido_id)
+            .first())
+
+
 def get_pedidos(db: Session):
     pedidos = db.query(models.Pedido).all()
     return pedidos
@@ -83,9 +90,10 @@ def update_produto(db: Session, produto_id: int, updated_data: dict):
     db.refresh(db_produto)
     return db_produto
 
-#Email
+# Email
 
-def send_mail(data:dict|None=None):
+
+def send_mail(data: dict | None = None):
     msg = mail.MailBodyModel(**data)
     message = MIMEText(msg.body, "html")
     message["From"] = USERNAME
@@ -104,5 +112,3 @@ def send_mail(data:dict|None=None):
         return {"status": 200, "errors": None}
     except Exception as e:
         return {"status": 500, "errors": e}
-
-

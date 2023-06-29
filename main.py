@@ -92,6 +92,11 @@ def get_pedidos(db: Session = Depends(get_db)):
     return pedidos
 
 
+@app.get("/pedidos/{pedido_id}", response_model=schemas.Pedido)
+def get_pedidos(pedido_id: int, db: Session = Depends(get_db)):
+    pedidos = crud.get_pedido(db, pedido_id)
+    return pedidos
+
 # Send_Email
 
 
