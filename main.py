@@ -1,6 +1,8 @@
 from typing import List
 
 from fastapi import FastAPI, Depends, HTTPException, BackgroundTasks
+from fastapi.middleware.cors import CORSMiddleware
+
 from sqlalchemy.orm import Session
 
 from sql_app import models, schemas, crud, mail
@@ -8,8 +10,21 @@ from sql_app.database import SessionLocal
 
 app = FastAPI()
 
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Dependency for getting a database session
+
+
 def get_db():
     try:
         db = SessionLocal()
